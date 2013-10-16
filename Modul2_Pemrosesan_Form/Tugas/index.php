@@ -7,9 +7,47 @@
 <meta name="Author" content="galih">
 <link rel="stylesheet" type="text/css" href="css/reset.css">
 <link rel="stylesheet" type="text/css" href="css/structure.css">
+
+<SCRIPT TYPE="text/javascript">
+<!--
+// copyright 1999 Idocs, Inc. http://www.idocs.com
+// Distribute this script freely but keep this notice in place
+function stringonly(myfield, e, dec)
+{
+var key;
+var keychar;
+if (window.event)
+key = window.event.keyCode;
+else if (e)
+key = e.which;
+else
+return false;
+keychar = String.fromCharCode(key);
+
+// control keys
+if ((key==null) || (key==0) || (key==8) ||(key==9) || (key==13) || (key==27) )
+	return false;
+
+// numbers
+else if ((("0123456789").indexOf(keychar) > -1))
+return false;
+
+// decimal point jump
+else if (dec && (keychar == "."))
+{
+	myfield.form.elements[dec].focus();
+	return true;
+}
+
+else
+	return true;
+}
+
+//-->
+</SCRIPT>
 </head>
 <body>
-<form class="box login" action="chklogin.php" method="post">
+<form class="box login" onKeyPress="return stringonly(this, event)" action="chklogin.php" method="post">
 	<fieldset class="boxBody">
 	  <label>Username</label>
 	  <input type="text" name="username" tabindex="1" placeholder="" required>
