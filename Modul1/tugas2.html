@@ -1,0 +1,75 @@
+<html>
+<head>
+<title>Generate Tabel</title>
+<style type = "text/css">
+<!--
+#a1 {
+	width: 180px;
+	height: 25px;
+	z-index: 1;
+	left: 285px;
+	top: 190px;
+	color: grey;
+}
+.b1 {
+	font-weight: bold;
+}
+-->
+</style>
+</head>
+<body>
+<script language = "JavaScript" type="text/javascript">
+function getmax(){
+	var R = parseInt(document.getElementById('JumlahBaris').value);
+	var C = parseInt(document.getElementById('JumlahKolom').value);
+	var CL = parseInt(document.getElementById('JumlahSel').value);
+	var cellmax = parseInt(document.getElementById('maxcells').value);
+	var total = 'N/A';
+	total = R*C;
+	cellmax.value = new String(total);
+	if (CL > total)
+	{
+		alert('Total sel terlalu banyak, nilai maksimum sel = ' + total);
+		document.getElementById('CellsTotal').value = new String();
+	}
+}
+</script>
+
+<form method="post" action="tugas2.php">
+	<h3 class="b1">Generate Sel Tabel Secara Fleksibel</h3>
+	<div>
+		<table width="300" border="0" bgcolor="purple">
+			<tr bglolor="blue">
+				<td width="120" style="text-align:left">Baris</td>
+				<td width="189"><strong>= </strong>
+			<input name="JumlahBaris" type="text" id="JumlahBaris" onKeyUp="getmax();" onfocus="this.select();"/></td>
+			</tr>
+			
+			<tr bglolor="blue">
+				<td width="120" style="text-align:left">Kolom</td>
+				<td width="189"><strong>= </strong>
+			<input name="JumlahKolom" type="text" id="JumlahKolom" onKeyUp="getmax();" onfocus="this.select();"/></td>
+			</tr>
+			
+			<tr bglolor="blue">
+				<td width="120" style="text-align:left">Jumlah Sel</td>
+				<td width="189"><strong>= </strong>
+			<input name="JumlahSel" type="text" id="JumlahSel" onKeyUp="getmax();" onfocus="this.select();"/></td>
+			</tr>
+			
+			<tr bglolor="blue">
+				<td width="120" style="text-align:left">Sel Maksimal</td>
+				<td width="189"><strong>= </strong>
+			<input name="maxcells" type="text" id="maxcells" onKeyUp="getmax();" onfocus="this.select();"/></td>
+			</tr>
+		</table>
+	</div>
+	<div id="a1">
+	<input type="submit" name="Generate" value="Generate"/>
+	<input type="reset" name="Reset" value="Reset"/>
+	</div>
+	
+
+</form>
+</body>
+</html>
